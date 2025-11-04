@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
   xmlhttp.send();
   header.innerHTML = xmlhttp.responseText;
 
-  const navLinkEls = document.querySelectorAll('.navbar-nav .nav-link');  // Selects all the elements with the two classes
+  const navLinkEls = document.querySelectorAll('.navbar-nav .nav-link:not(.btn)');  // Selects all the elements with the two classes
   const windowPathname = window.location.pathname;
 
   navLinkEls.forEach(navLinkEl => {
