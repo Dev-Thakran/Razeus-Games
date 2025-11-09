@@ -1,4 +1,4 @@
-// Disable form submissions if there are invalid fields
+// Bootstrap form validation initialization
 (function () {
     'use strict';
     window.addEventListener('load', function () {
@@ -17,61 +17,142 @@
     }, false);
 })();
 
+// This function is to validate the form fields on input after the DOM content has been loaded 
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.needs-validation');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+
+    // Add input event listeners for real-time validation
+    if (usernameInput) {
+        usernameInput.addEventListener('input', validateUsername);
+    }
+    if (passwordInput) {
+        passwordInput.addEventListener('input', validatePassword);
+    }
+    if (confirmPasswordInput) {
+        confirmPasswordInput.addEventListener('input', validateConfirmPassword);
+    }
+
+    // Add form submit handler
+    if (form) {
+        form.addEventListener('submit', function (event) {
+
+            if (validateForm() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+        });
+    }
+});
+
+// Function to validate username
+function validateUsername() {
+    const usernameInput = document.getElementById('username');
+    const username = usernameInput.value.trim();
+    const usernameValid = document.getElementById('usernameValid');
+    const usernameInvalid = document.getElementById('usernameInvalid');
+
+    // If statement for when the username is left blank
+    if (username === '') {
+        usernameInvalid.textContent = 'Please enter a username';
+        usernameInput.classList.add('is-invalid');
+        usernameInput.classList.remove('is-valid');
+        return false;
+    }
+
+    // If statement for when the username is less than 5 characters
+    if (username.length < 5) {
+        usernameInvalid.textContent = 'The username must have at least 5 characters';
+        usernameInput.classList.add('is-invalid');
+        usernameInput.classList.remove('is-valid');
+        return false;
+    }
+
+    // Runs this code when the username is valid
+    usernameValid.textContent = 'Username is valid';
+    usernameInput.classList.add('is-valid');
+    usernameInput.classList.remove('is-invalid');
+    return true;
+}
+
+// Function to validate password
+function validatePassword() {
+    const passwordInput = document.getElementById('password');
+    const password = passwordInput.value.trim();
+    const passwordValid = document.getElementById('passwordValid');
+    const passwordInvalid = document.getElementById('passwordInvalid');
+    const regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    // empty
+    if (password === '') {
+        passwordInvalid.textContent = 'Please enter a password';
+        passwordInput.classList.add('is-invalid');
+        passwordInput.classList.remove('is-valid');
+        return false;
+    }
+
+    // invalid format
+    else if (!regularExpression.test(password)) {
+        passwordInvalid.textContent = 'Password must have at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character';
+        passwordInput.classList.add('is-invalid');
+        passwordInput.classList.remove('is-valid');
+        return false;
+    }
+
+    // valid
+    else {
+        passwordValid.textContent = 'Password is valid';
+        passwordInput.classList.add('is-valid');
+        passwordInput.classList.remove('is-invalid');
+        return true;
+    }
+}
+
+// Function to validate confirm password
+function validateConfirmPassword() {
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const confirmPasswordValid = document.getElementById('confirmPasswordValid');
+    const confirmPasswordInvalid = document.getElementById('confirmPasswordInvalid');
+
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
+
+    // empty
+    if (confirmPassword === '') {
+        confirmPasswordInvalid.textContent = 'Please confirm your password';
+        confirmPasswordInput.classList.add('is-invalid');
+        confirmPasswordInput.classList.remove('is-valid');
+        return false;
+    }
+
+    // mismatch
+    if (password !== confirmPassword) {
+        confirmPasswordInvalid.textContent = 'Passwords do not match';
+        confirmPasswordInput.classList.add('is-invalid');
+        confirmPasswordInput.classList.remove('is-valid');
+        return false;
+    }
+
+    // valid
+    confirmPasswordValid.textContent = 'Passwords match';
+    confirmPasswordInput.classList.add('is-valid');
+    confirmPasswordInput.classList.remove('is-invalid');
+    return true;
+}
+
+// Main validation function
 
 function validateForm() {
+    // Validate all fields
+    const isUsernameValid = validateUsername();
+    const isPasswordValid = validatePassword();
+    const isConfirmPasswordValid = validateConfirmPassword();
 
-    var validFeedback = document.querySelectorAll(".valid-feedback");
-    var invalidFeedback = document.querySelectorAll(".invalid-feedback");
-    for (var x = 0; x < validFeedback.length; x++) {
-        validFeedback[x].innerHTML = "";
-    }
-    for (var y = 0; y < invalidFeedback.length; y++) {
-        invalidFeedback[y].innerHTML = "";
-    }
-
-    
-
-    // The validation for username
-    let username = document.getElementById("username").value;
-    console.log(username.length);
-    if (username.length < 5) {
-        document.getElementById("usernameInvalid").innerHTML = "The username must have more than 5 characters";
-        return false;
-    }
-    else if (username == "") {
-        document.getElementById("usernameInvalid").textContent = "Please enter a username";
-        return false;
-    }
-    else {
-        document.getElementById("usernameValid").textContent = "The username is valid";
-    }
-
-
-
-    // The validation for age
-    let age = document.getElementById("age").value;
-    if (age < 0 || age > 100) {
-        document.getElementById("ageInvalid").textContent = "Please enter a valid age between 0 and 100";
-        return false;
-    }
-    else {
-        document.getElementById("ageValid").textContent = "The age is valid";
-    }
-
-
-
-    // Validation for password
-    let password = document.getElementById("password").value;
-    let confirmPassword = document.getElementById("confirmPassword").value;
-    var regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-    if (regularExpression.test(password) == false) {
-        document.getElementById("passwordInvalid").textContent = "Password must have atleast one special character, number and should contain lowercase and uppercase letters";
-        return false;
-    }
-    else if (password !== confirmPassword) {
-        document.getElementById("confirmPasswordInvalid").textContent = "Passwords do not match.";
-        return false;
-    }
-    return true;
+    // Return overall form validity
+    return isUsernameValid && isPasswordValid && isConfirmPasswordValid;
 }

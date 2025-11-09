@@ -34,12 +34,12 @@
             <h1>Register Now!</h1>
             <div class="container form-container register-form-container my-5 p-4 w-100">
 
-                <form class="needs-validation" novalidate onsubmit="return validateForm()">
+                <form class="needs-validation" novalidate autocomplete="off">
 
                     <!------------------------------------ Row 1 ---------------------------------------->
                     <div class="row">
                         <div class="columns col">
-                            <div class="form-group me-4">
+                            <div class="form-group">
                                 <label for="username" class="form-label">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" required
                                     placeholder="Create your username">
@@ -47,6 +47,7 @@
                                 <div class="invalid-feedback" id="usernameInvalid"></div>
                             </div>
                         </div>
+                    </div>
 
                         <!------------------------------------ Row 2 ---------------------------------------->
                         <div class="row pt-3">
@@ -55,8 +56,8 @@
                                     <label for="email" class="form-label">Email:</label>
                                     <input type="email" class="form-control" id="email" name="email" required
                                         placeholder="Enter your email">
-                                    <div class="valid-feedback" id="emailValid"></div>
-                                    <div class="invalid-feedback" id="emailInvalid"></div>
+                                    <div class="valid-feedback" id="emailValid">Email valid</div>
+                                    <div class="invalid-feedback" id="emailInvalid">Please enter a valid email.</div>
                                 </div>
                             </div>
                         </div>
@@ -68,40 +69,9 @@
                                 <div class="form-group">
                                     <label for="age" class="form-label">Enter your age:</label>
                                     <input type="number" class="form-control" id="age" name="age" required
-                                        placeholder="1-100">
+                                        placeholder="1-100" min="1" max="100">
                                     <div class="valid-feedback" id="ageValid"></div>
-                                    <div class="invalid-feedback" id="ageInvalid"></div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!------------------------------------ Row 5 ---------------------------------------->
-                        <div class="row pt-3">
-                            <div class="columns col">
-                                <div class="form-group">
-                                    <label for="gender" class="form-label">Please select your gender:</label>
-                                    <select name="gender" id="gender" class="form-control" required>
-                                        <option value="Male">Male</option>
-                                        <option value="Male">Female</option>
-                                        <option value="Male">Others</option>
-                                    </select>
-                                    <div class="valid-feedback" id="genderValid"></div>
-                                    <div class="invalid-feedback" id="genderInvalid"></div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!------------------------------------ Row 3 ---------------------------------------->
-                        <div class="row pt-3">
-                            <div class="columns col">
-                                <div class="form-group">
-                                    <label for="phone" class="form-label">Phone:</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" required
-                                        pattern="[0-9]{3} [0-9]{3} [0-9]{4}" placeholder="123 456 7890">
-                                    <div class="valid-feedback" id="phoneValid"></div>
-                                    <div class="invalid-feedback" id="phoneInvalid"></div>
+                                    <div class="invalid-feedback" id="ageInvalid">Please enter an age that is between 1 and 100.</div>
                                 </div>
                             </div>
                         </div>
@@ -111,11 +81,14 @@
                         <div class="row pt-3">
                             <div class="columns col">
                                 <div class="form-group">
-                                    <label for="password" class="form-label">Password:</label>
-                                    <input type="password" class="form-control" id="password" name="password" required
-                                        placeholder="Create your password">
-                                    <div class="valid-feedback" id="passwordValid"></div>
-                                    <div class="invalid-feedback" id="passwordInvalid"></div>
+                                    <label for="gender" class="form-label">Please select your gender:</label>
+                                    <select name="gender" id="gender" class="form-control">
+                                        <option value="Male">Male</option>
+                                        <option value="Male">Female</option>
+                                        <option value="Male">Others</option>
+                                    </select>
+                                    <div class="valid-feedback" id="genderValid"></div>
+                                    <div class="invalid-feedback" id="genderInvalid">Please select atleast one of the options.</div>
                                 </div>
                             </div>
                         </div>
@@ -125,9 +98,37 @@
                         <div class="row pt-3">
                             <div class="columns col">
                                 <div class="form-group">
+                                    <label for="phone" class="form-label">Phone:</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required
+                                        pattern="[0-9]{3} [0-9]{3} [0-9]{4}" placeholder="123 456 7890">
+                                    <div class="valid-feedback" id="phoneValid"></div>
+                                    <div class="invalid-feedback" id="phoneInvalid">Please enter the correct foramt for the phone i.e., 123 123 1234</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!------------------------------------ Row 6 ---------------------------------------->
+                        <div class="row pt-3">
+                            <div class="columns col">
+                                <div class="form-group">
+                                    <label for="password" class="form-label">Password:</label>
+                                    <input type="password" class="form-control" id="password" name="password" required
+                                        placeholder="Create your password">
+                                    <div class="valid-feedback" id="passwordValid"></div>
+                                    <div class="invalid-feedback" id="passwordInvalid">Please enter a password</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!------------------------------------ Row 7 ---------------------------------------->
+                        <div class="row pt-3">
+                            <div class="columns col">
+                                <div class="form-group">
                                     <label for="confirmPassword" class="form-label">Confirm password:</label>
-                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required
-                                        placeholder="Re-enter your password">
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        name="confirmPassword" required placeholder="Re-enter your password">
                                     <div class="valid-feedback" id="confirmPasswordValid"></div>
                                     <div class="invalid-feedback" id="confirmPasswordInvalid"></div>
                                 </div>
@@ -135,7 +136,7 @@
                         </div>
 
 
-                        <!------------------------------------ Row 6 ---------------------------------------->
+                        <!------------------------------------ Row 8 ---------------------------------------->
                         <div class="row pt-3">
                             <div class="columns col">
                                 <div class="form-group">
@@ -148,19 +149,19 @@
                         </div>
 
 
-                        <!------------------------------------ Row 6 ---------------------------------------->
+                        <!------------------------------------ Row 9 ---------------------------------------->
                         <div class="row pt-3">
                             <div class="col">
                                 <div class="form-check form-switch">
                                     <label for="agree" class="form-check-label">I agree to T&Cs</label>
                                     <input type="checkbox" class="form-check-input" id="agree" name="agree" required>
                                     <div class="valid-feedback"></div>
-                                    <div class="invalid-feedback" id="termsInvalid"></div>
+                                    <div class="invalid-feedback" id="termsInvalid">Agree to the T&Cs</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!------------------------------------ Row 7 ---------------------------------------->
+                        <!------------------------------------ Row 10 ---------------------------------------->
                         <div class="row pt-3">
                             <div class="columns col">
 
