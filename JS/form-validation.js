@@ -43,6 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 event.preventDefault();
                 event.stopPropagation();
             }
+            else {
+                event.preventDefault();
+                window.location.href = 'form-submitted.html';
+            }
 
             form.classList.add('was-validated');
         });
@@ -85,7 +89,7 @@ function validatePassword() {
     const password = passwordInput.value.trim();
     const passwordValid = document.getElementById('passwordValid');
     const passwordInvalid = document.getElementById('passwordInvalid');
-    const regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&])[A-Za-z\d@$#!%*?&]{8,}$/;
 
     // empty
     if (password === '') {
