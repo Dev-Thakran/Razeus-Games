@@ -16,8 +16,13 @@
                         <a href="aboutUs.html" class="nav-link">About Us</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="shop.html" class="nav-link">Shop</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="shop.html">Shop</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="offcanvas" href="#cartOffCanvas">Cart</a></li>
+                        </ul>
                     </li>
 
                     <li class="nav-item">
@@ -31,17 +36,22 @@
                     <li class="nav-item">
                         <a href="register.html" class="btn nav-link">Register</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-                            aria-controls="offcanvasExample">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <div class="offcanvas offcanvas-end" tabindex="-4" id="cartOffCanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Your cart</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+            
+        </div>
+        <div class="offcanvas-body">
+
+        </div>
+    </div>
 </header>
 
 <style>
@@ -76,6 +86,7 @@
 
     .nav-item {
         margin: 0 0.5rem;
+        list-style-type: none;
     }
 
     .navbar-nav .nav-link {
@@ -93,5 +104,27 @@
 
     .btn:hover {
         color: white !important;
+    }
+
+    /* For dropdown */
+
+    .dropdown-menu {
+        background-color: transparent;
+    }
+
+    .dropdown-item {
+        color: white;
+    }
+
+    .dropdown-item:hover {
+        background-color: transparent;
+        color: orange;
+    }
+
+    /* For offcanvas */
+
+    .offcanvas {
+        background-color: #131313;
+        color: white;
     }
 </style>

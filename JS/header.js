@@ -11,8 +11,20 @@ window.addEventListener("load", function () {
   navLinkEls.forEach(navLinkEl => {
     const navLinkPathname = new URL(navLinkEl.href).pathname;
 
-    if ((windowPathname === navLinkPathname || (windowPathname === '/index.html' && navLinkPathname ==='/'))) {
+    if (navLinkEl.classList.contains('dropdown-toggle')) return;
+
+    if ((windowPathname === navLinkPathname || (windowPathname === '/index.html' && navLinkPathname === '/'))) {
       navLinkEl.classList.add('active');
     }
-  })
+  });
+
+  const dropdownLink = header.querySelector('.nav-item.dropdown .nav-link');
+  if (dropdownLink) {
+    if (windowPathname.endsWith("shop.html")) {
+      dropdownLink.style.color = "orange"; // highlight only on shop page
+    } else {
+      dropdownLink.style.color = "white";  // default color on other pages
+    }
+  }
+
 });
