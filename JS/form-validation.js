@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (form) {
         form.addEventListener('submit', function (event) {
 
-            if (validateForm() === false) {
+            if (!validateForm()) {
                 event.preventDefault();
                 event.stopPropagation();
             }
