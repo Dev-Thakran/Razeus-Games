@@ -15,16 +15,17 @@ p {
 
 /* Home Page */
 
-.img-container {
+.home-landing-image {
   position: absolute;
+  top: 0;
   right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
   object-fit: cover;
-  opacity: 0.2;
+  opacity: 0.4;
 }
+
 
 .reviews .carousel-item img {
   width: 90%;
@@ -165,14 +166,14 @@ p {
   color: rgb(213, 100, 1) !important;
 }
 
-.container .row .shop-cards .card-link .cart {
+.container .row .shop-cards .card-links .cart {
   padding: 0;
   border: none;
   color: white;
   font-size: 1.2cap;
 }
 
-.container .row .shop-cards a.card-link {
+.container .row .shop-cards span.card-links {
   background-color: rgb(184, 127, 22);
   color: white;
   padding: 0.25rem 0.5rem;
@@ -180,8 +181,9 @@ p {
   text-decoration: none !important;
 }
 
-.container .row .shop-cards a.card-link:hover {
+.container .row .shop-cards a.card-links:hover {
   background-color: orange;
+  color: white !important;
   font-weight: bold;
   scale: calc(1.1) !important;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -192,7 +194,7 @@ p {
   color: inherit;
 }
 
-.shop-cards .card-link {
+.shop-cards .card-links {
   background-color: rgb(184, 127, 22);
   color: white;
   padding: 0.25rem 0.75rem;
@@ -201,7 +203,7 @@ p {
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.shop-cards .card-link:hover {
+.shop-cards .card-links:hover {
   background-color: orange;
   font-weight: bold;
   scale: calc(1.1);
