@@ -173,7 +173,7 @@ p {
   font-size: 1.2cap;
 }
 
-.container .row .shop-cards span.card-links {
+.container .row .shop-cards .card-links {
   background-color: rgb(184, 127, 22);
   color: white;
   padding: 0.25rem 0.5rem;
@@ -181,7 +181,11 @@ p {
   text-decoration: none !important;
 }
 
-.container .row .shop-cards a.card-links:hover {
+.container .row .shop-cards .card-links:active {
+  background-color: rgb(184, 127, 22) !important;
+}
+
+.container .row .shop-cards .card-links:hover {
   background-color: orange;
   color: white !important;
   font-weight: bold;
@@ -302,7 +306,7 @@ p {
   margin-bottom: 5rem;
 }
 
-.valid-feedback, 
+.valid-feedback,
 .invalid-feedback {
   font-size: small;
 }
