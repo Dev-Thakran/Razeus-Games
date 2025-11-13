@@ -1,28 +1,13 @@
-// Bootstrap form validation initialization
-(function () {
-    'use strict';
-    window.addEventListener('load', function () {
-        // Get the forms we want to add validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
-})();
-
 // This function is to validate the form fields on input after the DOM content has been loaded 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('.needs-validation');
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirmPassword');
+    const emailInput = document.getElementById('email');
+    const ageInput = document.getElementById('age');
+    const phoneInput = document.getElementById('phone');
+    const agree = document.getElementById('agree');
 
     // Add input event listeners for real-time validation
     if (usernameInput) {
@@ -33,6 +18,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (confirmPasswordInput) {
         confirmPasswordInput.addEventListener('input', validateConfirmPassword);
+    }
+    if (ageInput) {
+        ageInput.addEventListener('input', validateAge);
+    }
+    if (emailInput) {
+        emailInput.addEventListener('input', validateEmail);
+    }
+    if (phoneInput) {
+        phoneInput.addEventListener('input', validatePhone);
+    }
+    if (agree) {
+        agree.addEventListener('input', validateAgree);
     }
 
     // Add form submit handler
@@ -69,7 +66,7 @@ function validateUsername() {
     }
 
     // If statement for when the username is less than 5 characters
-    if (username.length < 5) {
+    else if (username.length < 5) {
         usernameInvalid.textContent = 'The username must have at least 5 characters';
         usernameInput.classList.add('is-invalid');
         usernameInput.classList.remove('is-valid');
@@ -77,10 +74,12 @@ function validateUsername() {
     }
 
     // Runs this code when the username is valid
-    usernameValid.textContent = 'Username is valid';
-    usernameInput.classList.add('is-valid');
-    usernameInput.classList.remove('is-invalid');
-    return true;
+    else {
+        usernameValid.textContent = 'Username is valid';
+        usernameInput.classList.add('is-valid');
+        usernameInput.classList.remove('is-invalid');
+        return true;
+    }
 }
 
 // Function to validate password
@@ -97,17 +96,13 @@ function validatePassword() {
         passwordInput.classList.add('is-invalid');
         passwordInput.classList.remove('is-valid');
         return false;
-    }
-
-    // invalid format
+    }// invalid format
     else if (!regularExpression.test(password)) {
         passwordInvalid.textContent = 'Password must have at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character';
         passwordInput.classList.add('is-invalid');
         passwordInput.classList.remove('is-valid');
         return false;
-    }
-
-    // valid
+    }// valid
     else {
         passwordValid.textContent = 'Password is valid';
         passwordInput.classList.add('is-valid');
@@ -132,22 +127,121 @@ function validateConfirmPassword() {
         confirmPasswordInput.classList.add('is-invalid');
         confirmPasswordInput.classList.remove('is-valid');
         return false;
-    }
-
-    // mismatch
+    }// mismatch
     if (password !== confirmPassword) {
         confirmPasswordInvalid.textContent = 'Passwords do not match';
         confirmPasswordInput.classList.add('is-invalid');
         confirmPasswordInput.classList.remove('is-valid');
         return false;
-    }
-
-    // valid
+    }// valid
     confirmPasswordValid.textContent = 'Passwords match';
     confirmPasswordInput.classList.add('is-valid');
     confirmPasswordInput.classList.remove('is-invalid');
     return true;
 }
+
+function validateEmail() {
+    const email = document.getElementById('email');
+    const emailValue = email.value.trim();
+    const emailInvalid = document.getElementById('emailInvalid');
+    const emailValid = document.getElementById('emailValid');
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailValue === '') {
+        emailInvalid.textContent = 'Please enter an email address';
+        email.classList.add('is-invalid');
+        email.classList.remove('is-valid');
+        return false;
+    }
+    else if (!regex.test(emailValue)) {
+        emailInvalid.textContent = 'Please enter a valid email address';
+        email.classList.add('is-invalid');
+        email.classList.remove('is-valid');
+        return false;
+    }
+    else {
+        emailValid.textContent = 'Email is valid';
+        email.classList.add('is-valid');
+        email.classList.remove('is-invalid');
+        return true;
+    }
+}
+
+
+function validateAge() {
+    const age = document.getElementById('age');
+    const ageValue = age.value.trim();
+    const ageInvalid = document.getElementById('ageInvalid');
+    const ageValid = document.getElementById('ageValid');
+
+    if (ageValue === '') {
+        ageInvalid.textContent = 'Please enter an age';
+        age.classList.add('is-invalid');
+        age.classList.remove('is-valid');
+        return false;
+    }
+    else if (ageValue > 100 || ageValue <= 0) {
+        ageInvalid.textContent = 'Please enter an age between 1 and 100';
+        age.classList.add('is-invalid');
+        age.classList.remove('is-valid');
+        return false;
+    }
+    else {
+        ageValid.textContent = 'Age is valid';
+        age.classList.add('is-valid');
+        age.classList.remove('is-invalid');
+        return true;
+    }
+}
+
+function validatePhone() {
+    const phoneInput = document.getElementById('phone');
+    const phone = phoneInput.value.trim();
+    const phoneValid = document.getElementById('phoneValid');
+    const phoneInvalid = document.getElementById('phoneInvalid');
+
+    // Regex for NZ phone numbers (basic format, can adjust if needed)
+    const phoneRegex = /^(\+64|0)[1-9]\d{7,9}$/;
+
+    // Empty input
+    if (phone === '') {
+        phoneInvalid.textContent = 'Please enter your phone number';
+        phoneInput.classList.add('is-invalid');
+        phoneInput.classList.remove('is-valid');
+        return false;
+    }// Invalid format
+    if (!phoneRegex.test(phone)) {
+        phoneInvalid.textContent = 'Please enter a valid NZ phone number (e.g. 0212345678 or +64212345678)';
+        phoneInput.classList.add('is-invalid');
+        phoneInput.classList.remove('is-valid');
+        return false;
+    }// Valid
+        phoneValid.textContent = 'Phone number is valid';
+        phoneInput.classList.add('is-valid');
+        phoneInput.classList.remove('is-invalid');
+        return true;
+}
+
+
+function validateAgree() {
+    const agree = document.getElementById('agree');
+    const agreeInvalid = document.getElementById('agreeInvalid');
+    const agreeValid = document.getElementById('agreeValid');
+
+    if (!agree.checked) {
+        agreeInvalid.textContent = 'You must agree to the terms and conditions';
+        agree.classList.add('is-invalid');
+        agree.classList.remove('is-valid');
+        return false;
+    }
+    else {
+        agreeValid.textContent = 'Thank you for agreeing to the terms';
+        agree.classList.add('is-valid');
+        agree.classList.remove('is-invalid');
+        return true;
+    }
+}
+
 
 // Main validation function
 
@@ -156,7 +250,11 @@ function validateForm() {
     const isUsernameValid = validateUsername();
     const isPasswordValid = validatePassword();
     const isConfirmPasswordValid = validateConfirmPassword();
+    const isAgeValid = validateAge();
+    const isEmailValid = validateEmail();
+    const isPhoneValid = validatePhone();
+    const isAgreeValid = validateAgree();
 
     // Return overall form validity
-    return isUsernameValid && isPasswordValid && isConfirmPasswordValid;
+    return isUsernameValid && isPasswordValid && isConfirmPasswordValid && isAgeValid && isEmailValid && isPhoneValid && isAgreeValid;
 }
