@@ -38,12 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Add form submit handler
 	form.addEventListener("submit", function (event) {
-		event.preventDefault(); // always prevent form's default submission
-
-		if (validateForm()) {
-			window.location.href = "form-submitted.html";
+		if (!validateForm()) {
+			event.preventDefault();
+			event.stopPropagation();
 		}
-
 		form.classList.add("was-validated");
 	});
 });
