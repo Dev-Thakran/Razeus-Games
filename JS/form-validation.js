@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			event.stopPropagation();
 		}
         else {
-            window.location.href = "/Razeus-Games/form-submitted.html";
+            window.location.href = "./form-submitted.html";
         }
 		form.classList.add("was-validated");
 	});
