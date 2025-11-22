@@ -29,6 +29,8 @@
 
     <section>
 
+        <img src="./Images/bg.png" alt="background image for shop page" class="register-landing-image">
+
         <div class="container register-container">
 
             <h1>Register Now!</h1>
@@ -81,13 +83,11 @@
                     <div class="row pt-3">
                         <div class="columns col">
                             <div class="form-group">
-                                <label for="gender" class="form-label">Please select your gender:</label>
-                                <select name="gender" id="gender" class="form-control">
-                                    <option value="Male">Male</option>
-                                    <option value="Male">Female</option>
-                                    <option value="Male">Others</option>
-                                </select>
-
+                                <label for="dateOfBirth" class="form-label">Date of Birth:
+                                </label>
+                                <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+                                <div class="valid-feedback" id="dateOfBirthValid"></div>
+                                <div class="invalid-feedback" id="dateOfBirthInvalid"></div>
                             </div>
                         </div>
                     </div>
@@ -139,11 +139,15 @@
                     <div class="row pt-3">
                         <div class="columns col">
                             <div class="form-group">
-                                <label for="DOB" class="form-label">Date of Birth:
-                                </label>
-                                <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
-                                <div class="valid-feedback"></div>
-                                <div class="invalid-feedback"></div>
+                                <label for="gender" class="form-label">Please select your gender:</label>
+                                <select name="gender" id="gender" class="form-control" required>
+                                    <option value="">-- Select a gender --</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                                <div class="valid-feedback" id="genderValid">Gender is valid</div>
+                                <div class="invalid-feedback" id="genderInvalid">Please select a gender</div>
                             </div>
                         </div>
                     </div>
