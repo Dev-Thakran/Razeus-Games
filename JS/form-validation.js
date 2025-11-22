@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			event.stopPropagation();
 		}
         else {
+            event.preventDefault();
             window.location.href = "./form-submitted.html";
         }
 		form.classList.add("was-validated");
