@@ -44,10 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 event.stopPropagation();
                 event.preventDefault();
             }
-            else {
-                window.location.href = 'form-submitted.html';
-            }
-
             form.classList.add('was-validated');
         });
     }
