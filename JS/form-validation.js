@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
         else {
             event.preventDefault();
-            window.location.href = "form-submitted.html";
+            window.location.href = "./form-submitted.html";
         }
 		form.classList.add("was-validated");
 	});
