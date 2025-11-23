@@ -28,155 +28,7 @@
 		<script src="./JS/cart.js"></script>
 
 		<title>Razeus Games</title>
-	</head>
-
-	<body>
-		<header class="p-3">
-			<nav class="navbar navbar-expand-lg navbar-dark">
-				<div class="container-fluid">
-					<a class="navbar-brand" href="index.html">
-						<img
-							src="./Images/logo.png"
-							alt="logo"
-							style="width: 50px; height: 50px" />
-						Razeus Games
-					</a>
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#myNavBar">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="myNavBar">
-						<ul class="navbar-nav ms-auto">
-							<li class="nav-item">
-								<a href="index.html" class="nav-link">Home</a>
-							</li>
-
-							<li class="nav-item">
-								<a href="aboutUs.html" class="nav-link">About Us</a>
-							</li>
-
-							<li class="nav-item dropdown">
-								<div class="nav-cart-container">
-									<a
-										class="nav-link dropdown-toggle"
-										href="#"
-										id="navbarDarkDropdownMenuLink"
-										role="button"
-										data-bs-toggle="dropdown"
-										aria-expanded="false">
-										Shop
-									</a>
-									<span
-										class="cart-item-count"
-										style="
-											bottom: 2px;
-											left: 43px;
-											:hover {
-												scale: calc(1.1);
-											}
-										"></span>
-									<ul
-										class="dropdown-menu"
-										aria-labelledby="navbarDarkDropdownMenuLink">
-										<li>
-											<a class="dropdown-item" href="shop.html">Shop</a>
-										</li>
-										<li>
-											<div class="nav-cart-container">
-												<a
-													class="dropdown-item"
-													data-bs-toggle="offcanvas"
-													href="#cartOffCanvas">
-													Cart
-												</a>
-												<span class="cart-item-count"></span>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</li>
-
-							<li class="nav-item">
-								<a href="contact.html" class="nav-link">Contact</a>
-							</li>
-
-							<li class="nav-item">
-								<a href="privacyPolicy.html" class="nav-link">Privacy Policy</a>
-							</li>
-
-							<li class="nav-item">
-								<a href="register.html" class="btn nav-link">Register</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-
-			<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffCanvas">
-				<div class="offcanvas-header">
-					<h2 class="offcanvas-title">Your cart</h2>
-					<button
-						type="button"
-						class="btn-close btn-close-white text-reset"
-						data-bs-dismiss="offcanvas"
-						aria-label="Close"></button>
-				</div>
-				<div class="offcanvas-body">
-					<div class="cart-content">
-						<!-- <div class="card">
-                    <div class="card-body">
-                        <div class="row mb-2">
-
-                            <div class="col-3">
-                                <img src="./Images/Ashfall-chronicles.jpg" style="width: auto" class="img-fluid rounded"
-                                    alt="Ashfall-chronicles-img">
-                            </div>
-
-
-                            <div class="col-6">
-                                <h6 class="cart-card-title" style="font-size: medium;">Ashfall Chronicles</h6>
-                                <div class="input-group pt-2">
-                                    <button class="text-center btn btn-outline-secondary btn-sm pt-0"
-                                        type="button">-</button>
-                                    <input style="max-width: 20px; font-size: small; border: none;" type="text"
-                                        class="text-center quantity-input" value="1">
-                                    <button class="text-center btn btn-outline-secondary btn-sm pt-0"
-                                        type="button">+</button>
-                                </div>
-                            </div>
-
-
-                            <div class="col-3 text-end">
-                                <p>$49.99</p>
-                                <button class="btn btn-sm btn-outline-danger">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div> -->
-					</div>
-				</div>
-
-				<div class="offcanvas-footer p-3">
-					<div class="row">
-						<div class="col-6">
-							<h6 class="text-start total-price">Total: $0.00</h6>
-						</div>
-						<div class="col-6 text-end">
-							<button class="btn submit-btn btn-sm checkout-btn">
-								Checkout
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
-
+		
 		<style>
 			.navbar-nav .nav-link {
 				color: white;
@@ -284,6 +136,148 @@
 				align-items: center;
 			}
 		</style>
+	</head>
+
+	<body>
+		<header class="p-3">
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="index.html">
+						<img
+							src="./Images/logo.png"
+							alt="logo"
+							style="width: 50px; height: 50px" />
+						Razeus Games
+					</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#myNavBar">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="myNavBar">
+						<ul class="navbar-nav ms-auto">
+							<li class="nav-item">
+								<a href="index.html" class="nav-link">Home</a>
+							</li>
+
+							<li class="nav-item">
+								<a href="aboutUs.html" class="nav-link">About Us</a>
+							</li>
+
+							<li class="nav-item dropdown">
+								<div class="nav-cart-container">
+									<a
+										class="nav-link dropdown-toggle"
+										href="#"
+										id="navbarDarkDropdownMenuLink"
+										role="button"
+										data-bs-toggle="dropdown"
+										aria-expanded="false">
+										Shop
+									</a>
+									<span
+										class="cart-item-count"
+										style="bottom: 2px; left: 43px"></span>
+									<ul
+										class="dropdown-menu"
+										aria-labelledby="navbarDarkDropdownMenuLink">
+										<li>
+											<a class="dropdown-item" href="shop.html">Shop</a>
+										</li>
+										<li>
+											<div class="nav-cart-container">
+												<a
+													class="dropdown-item"
+													data-bs-toggle="offcanvas"
+													href="#cartOffCanvas">
+													Cart
+												</a>
+												<span class="cart-item-count"></span>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li class="nav-item">
+								<a href="contact.html" class="nav-link">Contact</a>
+							</li>
+
+							<li class="nav-item">
+								<a href="privacyPolicy.html" class="nav-link">Privacy Policy</a>
+							</li>
+
+							<li class="nav-item">
+								<a href="register.html" class="btn nav-link">Register</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffCanvas">
+				<div class="offcanvas-header">
+					<h2 class="offcanvas-title">Your cart</h2>
+					<button
+						type="button"
+						class="btn-close btn-close-white text-reset"
+						data-bs-dismiss="offcanvas"
+						aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<div class="cart-content">
+						<!-- <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-2">
+
+                            <div class="col-3">
+                                <img src="./Images/Ashfall-chronicles.jpg" style="width: auto" class="img-fluid rounded"
+                                    alt="Ashfall-chronicles-img">
+                            </div>
+
+
+                            <div class="col-6">
+                                <h6 class="cart-card-title" style="font-size: medium;">Ashfall Chronicles</h6>
+                                <div class="input-group pt-2">
+                                    <button class="text-center btn btn-outline-secondary btn-sm pt-0"
+                                        type="button">-</button>
+                                    <input style="max-width: 20px; font-size: small; border: none;" type="text"
+                                        class="text-center quantity-input" value="1">
+                                    <button class="text-center btn btn-outline-secondary btn-sm pt-0"
+                                        type="button">+</button>
+                                </div>
+                            </div>
+
+
+                            <div class="col-3 text-end">
+                                <p>$49.99</p>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div> -->
+					</div>
+				</div>
+
+				<div class="offcanvas-footer p-3">
+					<div class="row">
+						<div class="col-6">
+							<h6 class="text-start total-price">Total: $0.00</h6>
+						</div>
+						<div class="col-6 text-end">
+							<button class="btn submit-btn btn-sm checkout-btn">
+								Checkout
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
 		<!-- The top part of the section -->
 		<section>
